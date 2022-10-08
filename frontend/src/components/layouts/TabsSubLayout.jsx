@@ -4,7 +4,7 @@ import { Card } from "../shared";
 
 const TabsSubLayout = ({ tabs }) => {
   return (
-    <div className="mt-2 space-y-2">
+    <div className="mt-2 space-y-4">
       <Card>
         <nav>
           <ul className="space-x-2 flex">

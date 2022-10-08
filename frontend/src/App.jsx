@@ -87,7 +87,23 @@ function App() {
               <Route path="incomplete" element={<ClientIncomplete />} />
               <Route path="inprogress" element={<ClientInProgress />} />
             </Route>
-            <Route path="account">
+            <Route
+              path="account"
+              element={
+                <TabsSubLayout
+                  tabs={[
+                    {
+                      tab: "profile",
+                      link: "/client/account",
+                    },
+                    {
+                      tab: "reviews",
+                      link: "/client/account/reviews",
+                    },
+                  ]}
+                />
+              }
+            >
               <Route path="" element={<ClientProfile />} />
               <Route path="reviews" element={<ClientReviews />} />
             </Route>

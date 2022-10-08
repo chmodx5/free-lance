@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { NavBar, Footer, Sidebar } from "../shared";
+import SidebarLayout from "./SidebarLayout";
 
 const ClientLayout = ({}) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
-    <div className="">
-      <NavBar
+    <>
+      <SidebarLayout
         toggle_sidebar={() => setSidebarOpen(!sidebarOpen)}
         nav_links={[
           {
@@ -26,74 +25,58 @@ const ClientLayout = ({}) => {
             link: "/client/account",
           },
         ]}
+        sidebar_links={[
+          {
+            title: "dashboard",
+            link: "/client",
+          },
+          {
+            title: "tasks",
+            link: "/client/tasks",
+            items: [
+              {
+                title: "dashboard",
+                link: "/client/tasks",
+              },
+              {
+                title: "active bids",
+                link: "/client/tasks/activebids",
+              },
+              {
+                title: "in progress",
+                link: "/client/tasks/inprogress",
+              },
+              {
+                title: "completed",
+                link: "/client/tasks/completed",
+              },
+              {
+                title: "incomplete",
+                link: "/client/tasks/incomplete",
+              },
+            ],
+          },
+          {
+            title: "freelancers",
+            link: "/client/freelancers",
+          },
+          {
+            title: "account",
+            link: "/client/account",
+            items: [
+              {
+                title: "profile",
+                link: "/client/account",
+              },
+              {
+                title: "reviews",
+                link: "/client/account/reviews",
+              },
+            ],
+          },
+        ]}
       />
-      <main>
-        <div className="flex  pt-14">
-          <div className={`${sidebarOpen ? "w-64" : "hidden "}  h-screen`}>
-            {sidebarOpen && (
-              <Sidebar
-                sidebar_links={[
-                  {
-                    title: "dashboard",
-                    link: "/client",
-                  },
-                  {
-                    title: "tasks",
-                    link: "/client/tasks",
-                    items: [
-                      {
-                        title: "dashboard",
-                        link: "/client/tasks",
-                      },
-                      {
-                        title: "active bids",
-                        link: "/client/tasks/activebids",
-                      },
-                      {
-                        title: "in progress",
-                        link: "/client/tasks/inprogress",
-                      },
-                      {
-                        title: "completed",
-                        link: "/client/tasks/completed",
-                      },
-                      {
-                        title: "incomplete",
-                        link: "/client/tasks/incomplete",
-                      },
-                    ],
-                  },
-                  {
-                    title: "freelancers",
-                    link: "/client/freelancers",
-                  },
-                  {
-                    title: "account",
-                    link: "/client/account",
-                    items: [
-                      {
-                        title: "profile",
-                        link: "/client/account",
-                      },
-                      {
-                        title: "reviews",
-                        link: "/client/account/reviews",
-                      },
-                    ],
-                  },
-                ]}
-              />
-            )}
-          </div>
-          <div className="flex-1 ">
-            <div className="px-4">
-              <Outlet />
-            </div>
-            <Footer />
-          </div>
-        </div>
-      </main>
-    </div>
+    </>
   );
 };
 
