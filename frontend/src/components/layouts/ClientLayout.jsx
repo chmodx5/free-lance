@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { NavBar, Footer, Sidebar } from "../shared";
 
 const ClientLayout = ({}) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <div className="">
       <NavBar
@@ -29,11 +29,7 @@ const ClientLayout = ({}) => {
       />
       <main>
         <div className="flex  pt-14">
-          <div
-            className={`${
-              sidebarOpen ? "w-64" : "hidden "
-            } bg-gray-200 h-screen`}
-          >
+          <div className={`${sidebarOpen ? "w-64" : "hidden "}  h-screen`}>
             {sidebarOpen && (
               <Sidebar
                 sidebar_links={[
@@ -90,7 +86,9 @@ const ClientLayout = ({}) => {
             )}
           </div>
           <div className="flex-1 ">
-            <Outlet />
+            <div className="px-4">
+              <Outlet />
+            </div>
             <Footer />
           </div>
         </div>

@@ -28,6 +28,7 @@ import {
   ClientLayout,
   WorkerLayout,
   GuestLayout,
+  TabsSubLayout,
 } from "./components/layouts";
 
 function App() {
@@ -51,7 +52,35 @@ function App() {
           <Route path="client" element={<ClientLayout />}>
             <Route path="" element={<ClientHome />} />
             <Route path="freelancers" element={<ClientFreelancers />} />
-            <Route path="tasks">
+            <Route
+              path="tasks"
+              element={
+                <TabsSubLayout
+                  tabs={[
+                    {
+                      tab: "dashboard",
+                      link: "/client/tasks",
+                    },
+                    {
+                      tab: "active bids",
+                      link: "/client/tasks/activebids",
+                    },
+                    {
+                      tab: "in progress",
+                      link: "/client/tasks/inprogress",
+                    },
+                    {
+                      tab: "completed",
+                      link: "/client/tasks/completed",
+                    },
+                    {
+                      tab: "incomplete",
+                      link: "/client/tasks/incomplete",
+                    },
+                  ]}
+                />
+              }
+            >
               <Route path="" element={<ClientTasks />} />
               <Route path="activebids" element={<ClientActiveBids />} />
               <Route path="completed" element={<ClientCompleted />} />
