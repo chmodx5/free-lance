@@ -3,5 +3,7 @@ import Footer from "./footer/Footer";
 import Sidebar from "./sidebar/Sidebar";
 import Card from "./card/Card";
 import AppTabs from "./apptabs/AppTabs";
+import FormInput from "./form/FormInput";
+import Button from "./buttons/Button";
 
-export { NavBar, Footer, Sidebar, Card, AppTabs };
+export { NavBar, Footer, Sidebar, Card, AppTabs, FormInput, Button };
