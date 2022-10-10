@@ -61,9 +61,7 @@ const Login = () => {
                   errors={formik.errors.password}
                 />
 
-                <Button type="submit" className="bg-red-400">
-                  login
-                </Button>
+                <Button type="submit">login</Button>
               </Form>
             )}
           </Formik>

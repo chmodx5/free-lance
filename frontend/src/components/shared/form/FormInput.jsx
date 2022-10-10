@@ -25,7 +25,7 @@ const FormInput = ({ placeholder, field_name, type, touched, errors }) => {
         type={type}
         name={field_name}
         placeholder={placeholder}
-        className={`block px-3 py-1 w-full text-gray-900 bg-white rounded-lg border border-gray-300 sm:text-md   ${
+        className={`block px-3 py-1 w-full text-gray-900 bg-white rounded border border-gray-300 sm:text-md   ${
           touched
             ? errors
               ? "outline outline-2 outline-error border-none"
