@@ -21,7 +21,9 @@ const GuestLayout = () => {
           },
         ]}
       />
-      <Outlet />
+      <div className="mt-14">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
