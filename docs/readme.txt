@@ -21,3 +21,11 @@ what the user should be able to do:
 	- delete jobs
 	- view all the total statistics of the system in a dashboard
 
+
+
+some notes:
+	- some of the state i will be maintaining is: 
+		1. is_authenticated
+		2. user {object containing the user information}
+		3. session_token
+
