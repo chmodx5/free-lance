@@ -11,7 +11,7 @@ async function main() {
     //do some validation on the incomeing data
     if (!username || !password || !account_type) {
       return res.status(400).json({
-        error: "Please fill in all the fields",
+        message: "Please fill in all the fields",
       });
     }
 
@@ -21,7 +21,7 @@ async function main() {
     if (!user) {
       return res.status(400).json({
         status: false,
-        error: "User not found",
+        message: "User not found",
       });
     }
 
@@ -29,7 +29,6 @@ async function main() {
       if (response) {
         console.log(user.id);
         const token = jwt.sign({ data: user.id, expiresIn: 300 }, "siri");
-        console.log(token);
         return res.status(200).json({
           status: true,
           user: {
@@ -42,7 +41,7 @@ async function main() {
       } else {
         return res.status(400).json({
           status: false,
-          error: "Incorrect password",
+          message: "Incorrect password",
         });
       }
     });

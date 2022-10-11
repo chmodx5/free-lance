@@ -29,3 +29,5 @@ some notes:
 		2. user {object containing the user information}
 		3. session_token
 
+
+for making api requests im using rtk query and it is in the services folder

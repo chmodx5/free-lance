@@ -9,12 +9,13 @@ const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
-app.use(verifyjwt);
+// app.use(verifyjwt);
 
 app.use("/api/artists", artistsRoutes);
 app.use("/auth", authRoutes);
 app.get("/", (req, res) => {
-  res.send("Welcome to the Users API! " + req.user_id);
+  // res.send("Welcome to the Users API! " + req.user_id);
+  return res.status(200).json({ message: "Welcome to the Users API!" });
 });
 app.all("*", (req, res) =>
   res.send("You've tried reaching a route that doesn't exist.")

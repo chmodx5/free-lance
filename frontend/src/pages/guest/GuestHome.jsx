@@ -4,7 +4,6 @@ import { setAuthStatus } from "../../features/auth/authSlice";
 
 const GuestHome = () => {
   const status = useSelector((state) => state.auth.is_authenticated);
-  console.log(status);
   const dispatch = useDispatch();
 
   return (
