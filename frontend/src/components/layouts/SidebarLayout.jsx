@@ -11,7 +11,7 @@ const SidebarLayout = ({ nav_links, sidebar_links }) => {
         nav_links={nav_links}
       />
       <main>
-        <div className="flex  pt-14">
+        <div className="flex  pt-16">
           <div className={`${sidebarOpen ? "w-64" : "hidden "}  h-screen`}>
             {sidebarOpen && <Sidebar sidebar_links={sidebar_links} />}
           </div>

@@ -8,7 +8,7 @@ const Sidebar = ({ sidebar_links }) => {
   const current_route = useLocation();
   console.log(current_route.pathname.split("/")[2]);
   return (
-    <div className="fixed  w-64 h-screen px-2 py-2">
+    <div className="fixed  w-64 h-screen px-2 ">
       <Card>
         <ul className="space-y-2 ">
           {sidebar_links.map((item, index) => (
