@@ -2,6 +2,10 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
+  corePlugins: {
+    preflight: true,
+  },
+  important: "#root",
   theme: {
     extend: {
       colors: {

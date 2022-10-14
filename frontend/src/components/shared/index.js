@@ -5,5 +5,6 @@ import Card from "./card/Card";
 import AppTabs from "./apptabs/AppTabs";
 import FormInput from "./form/FormInput";
 import Button from "./buttons/Button";
+import AppTable from "./apptable/AppTable";
 
-export { NavBar, Footer, Sidebar, Card, AppTabs, FormInput, Button };
+export { NavBar, Footer, Sidebar, Card, AppTabs, FormInput, Button, AppTable };
