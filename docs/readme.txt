@@ -31,3 +31,5 @@ some notes:
 
 
 for making api requests im using rtk query and it is in the services folder
+
+furthut on into the project i  realised tailwind would be too much  work on its own so i have added mui to the project
