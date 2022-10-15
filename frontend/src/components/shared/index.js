@@ -6,5 +6,15 @@ import AppTabs from "./apptabs/AppTabs";
 import FormInput from "./form/FormInput";
 import Button from "./buttons/Button";
 import AppTable from "./apptable/AppTable";
-
-export { NavBar, Footer, Sidebar, Card, AppTabs, FormInput, Button, AppTable };
+import AutoComplete from "./form/AutoComplete";
+export {
+  NavBar,
+  Footer,
+  Sidebar,
+  Card,
+  AppTabs,
+  FormInput,
+  Button,
+  AppTable,
+  AutoComplete,
+};
