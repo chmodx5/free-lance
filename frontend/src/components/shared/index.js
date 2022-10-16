@@ -7,6 +7,7 @@ import FormInput from "./form/FormInput";
 import Button from "./buttons/Button";
 import AppTable from "./apptable/AppTable";
 import AutoComplete from "./form/AutoComplete";
+import CheckAuthStatus from "./checkauthstatus/CheckAuthStatus";
 export {
   NavBar,
   Footer,
@@ -17,4 +18,5 @@ export {
   Button,
   AppTable,
   AutoComplete,
+  CheckAuthStatus,
 };
