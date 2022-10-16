@@ -14,8 +14,8 @@ const TabsSubLayout = ({ tabs }) => {
                   to={item.link}
                   end
                   className={({ isActive }) => {
-                    return `px-3 py-1 capitalize hover:bg-primary hover:text-white rounded 
-               , ${isActive ? "bg-primary text-white" : ""} `;
+                    return `px-3 py-1 capitalize hover:bg-primary-main hover:text-white rounded 
+               , ${isActive ? "bg-primary-main text-white" : ""} `;
                   }}
                 >
                   {item.tab}

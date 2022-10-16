@@ -8,7 +8,7 @@ function classNames(...classes) {
 const AppTabs = ({ tabHeaders, tabItems }) => {
   return (
     <Tab.Group>
-      <Tab.List className="flex space-x-2 rounded-xl bg-primary p-1">
+      <Tab.List className="flex space-x-2 rounded-xl bg-primary-main p-1">
         {tabHeaders.map((tabHeader, index) => (
           <Tab
             key={index}

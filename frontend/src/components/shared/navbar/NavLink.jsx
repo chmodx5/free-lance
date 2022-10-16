@@ -8,8 +8,8 @@ const NavLink = ({ href, title }) => {
     <Link
       to={href}
       className={`${
-        router.pathname === href && "text-primary "
-      } font-bold capitalize hover:text-primary`}
+        router.pathname === href && "text-primary-main "
+      } font-bold capitalize hover:text-primary-main`}
     >
       {title}
     </Link>

@@ -27,7 +27,7 @@ const Register = () => {
                 alt="Logo"
               />
               <span className=" text-xl font-bold whitespace-nowrap dark:text-white">
-                <span className="text-primary">Lancer</span>
+                <span className="text-primary-main">Lancer</span>
                 <span>Free</span>
               </span>
             </Link>

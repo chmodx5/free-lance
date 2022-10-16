@@ -13,7 +13,7 @@ const NavBar = ({ nav_links, toggle_sidebar }) => {
             alt="Logo"
           />
           <span className="self-center text-xl font-bold whitespace-nowrap dark:text-white">
-            <span className="text-primary">Lancer</span>
+            <span className="text-primary-main">Lancer</span>
             <span>Free</span>
           </span>
         </a>
@@ -25,8 +25,8 @@ const NavBar = ({ nav_links, toggle_sidebar }) => {
                 <NavLink
                   to={item.link}
                   className={({ isActive }) => {
-                    return `font-semibold capitalize hover:text-primary ${
-                      isActive ? "text-primary" : "text-black"
+                    return `font-semibold capitalize hover:text-primary-main ${
+                      isActive ? "text-primary-main" : "text-black"
                     }`;
                   }}
                 >
@@ -36,7 +36,7 @@ const NavBar = ({ nav_links, toggle_sidebar }) => {
             ))}
             <button
               onClick={toggle_sidebar}
-              className="text-xl hover:text-primary px-2 py-1"
+              className="text-xl hover:text-primary-main px-2 py-1"
             >
               <HiMenu />
             </button>

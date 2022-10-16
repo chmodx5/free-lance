@@ -19,9 +19,10 @@ const Sidebar = ({ sidebar_links }) => {
                     {({ open }) => (
                       <>
                         <Menu.Button
-                          className={`capitalize hover:text-white  hover:bg-primary  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
+                          className={`capitalize hover:text-white  hover:bg-primary-main  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
                             current_route.pathname.split("/")[2] ==
-                              item.link.split("/")[2] && "bg-primary text-white"
+                              item.link.split("/")[2] &&
+                            "bg-primary-main text-white"
                           }`}
                         >
                           <span className=" bg">{item.title}</span>
@@ -36,8 +37,8 @@ const Sidebar = ({ sidebar_links }) => {
                                 end
                                 to={sub_item.link}
                                 className={({ isActive }) => {
-                                  return `capitalize hover:bg-primary hover:text-white  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
-                                    isActive ? "bg-primary text-white" : ""
+                                  return `capitalize hover:bg-primary-main hover:text-white  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
+                                    isActive ? "bg-primary-main text-white" : ""
                                   }`;
                                 }}
                               >
@@ -56,8 +57,8 @@ const Sidebar = ({ sidebar_links }) => {
                     end
                     to={item.link}
                     className={({ isActive }) => {
-                      return `capitalize  hover:bg-primary hover:text-white  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
-                        isActive ? "bg-primary text-white" : ""
+                      return `capitalize  hover:bg-primary-main hover:text-white  text-left px-2 py-1 rounded   w-full flex items-center justify-between ${
+                        isActive ? "bg-primary-main text-white" : ""
                       }`;
                     }}
                   >

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { AppTable, Card, AutoComplete, Chip } from "./../../components/shared";
+import {
+  AppTable,
+  Card,
+  AutoComplete,
+  Chip,
+  Button,
+} from "./../../components/shared";
 import { HiChevronDown } from "react-icons/hi";
 import { BsChevronExpand } from "react-icons/bs";
 
@@ -9,16 +15,13 @@ const ClientFreelancers = () => {
       <div className="grid gap-4">
         {/* add a field to select the project someone that someone wants to view bids for */}
         <Card className={"flex space-x-4 justify-between items-center"}>
-          <button className="flex divide-x divide-dotted divide-gray-500">
+          <div className="flex space-x-3 ">
             {["rating", "reviews", "completion rate"].map((item, index) => (
-              <div
-                key={index}
-                className=" capitalize text-secondary hover:font-semibold  flex space-x-2 items-center px-2"
-              >
+              <Button variant={"contained"} color={""} key={index}>
                 <span>{item}</span> <HiChevronDown />
-              </div>
+              </Button>
             ))}
-          </button>
+          </div>
           {/* autocomplete */}
           <div>
             <AutoComplete
