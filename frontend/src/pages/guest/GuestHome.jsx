@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { setAuthStatus } from "../../features/auth/authSlice";
 import { CheckAuthStatus } from "../../components/shared";
 
@@ -10,7 +9,7 @@ const GuestHome = () => {
 
   return (
     <>
-      <CheckAuthStatus />;
+      {/* <CheckAuthStatus />; */}
       <div>
         GuestHome
         <br /> status

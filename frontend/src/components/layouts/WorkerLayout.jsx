@@ -1,9 +1,11 @@
 import React from "react";
+import { CheckAuthStatus } from "../shared";
 import SidebarLayout from "./SidebarLayout";
 
 const WorkerLayout = () => {
   return (
     <>
+      <CheckAuthStatus account_type={"worker"} />
       <SidebarLayout
         nav_links={[
           {

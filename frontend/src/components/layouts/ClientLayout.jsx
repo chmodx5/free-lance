@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { CheckAuthStatus } from "../shared";
 import SidebarLayout from "./SidebarLayout";
 
 const ClientLayout = ({}) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <>
+      <CheckAuthStatus account_type={"client"} />
       <SidebarLayout
         toggle_sidebar={() => setSidebarOpen(!sidebarOpen)}
         nav_links={[
