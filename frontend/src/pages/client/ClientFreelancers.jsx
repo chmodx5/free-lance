@@ -15,13 +15,20 @@ const ClientFreelancers = () => {
       <div className="grid gap-4">
         {/* add a field to select the project someone that someone wants to view bids for */}
         <Card className={"flex space-x-4 justify-between items-center"}>
-          <div className="flex space-x-3 ">
+          <ul className="flex space-x-2 ">
             {["rating", "reviews", "completion rate"].map((item, index) => (
-              <Button variant={"contained"} color={""} key={index}>
-                <span>{item}</span> <HiChevronDown />
-              </Button>
+              <li key={index}>
+                <Button
+                  variant={"outlined"}
+                  color={""}
+                  icon={<HiChevronDown />}
+                  key={index}
+                >
+                  {item}
+                </Button>
+              </li>
             ))}
-          </div>
+          </ul>
           {/* autocomplete */}
           <div>
             <AutoComplete
