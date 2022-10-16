@@ -8,6 +8,7 @@ import Button from "./buttons/Button";
 import AppTable from "./apptable/AppTable";
 import AutoComplete from "./form/AutoComplete";
 import CheckAuthStatus from "./checkauthstatus/CheckAuthStatus";
+import Chip from "./chip/Chip";
 export {
   NavBar,
   Footer,
@@ -19,4 +20,5 @@ export {
   AppTable,
   AutoComplete,
   CheckAuthStatus,
+  Chip,
 };
