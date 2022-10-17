@@ -56,6 +56,14 @@ const ClientLayout = ({}) => {
                 title: "incomplete",
                 link: "/client/tasks/incomplete",
               },
+              {
+                title: "canceled",
+                link: "/client/tasks/canceled",
+              },
+              {
+                title: "add new",
+                link: "/client/tasks/newtask",
+              },
             ],
           },
           {
