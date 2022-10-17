@@ -22,6 +22,7 @@ import {
   ClientCompleted,
   ClientIncomplete,
   ClientInProgress,
+  ClientSingleFreelancer,
 } from "./pages";
 import {
   AdminLayout,
@@ -52,6 +53,7 @@ function App() {
           <Route path="client" element={<ClientLayout />}>
             <Route path="" element={<ClientHome />} />
             <Route path="freelancers" element={<ClientFreelancers />} />
+            <Route path="freelancer/:id" element={<ClientSingleFreelancer />} />
             <Route
               path="tasks"
               element={

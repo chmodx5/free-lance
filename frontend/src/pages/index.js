@@ -22,6 +22,7 @@ import WorkerIncomplete from "./worker/tasks/WorkerIncomplete";
 import WorkerInProgress from "./worker/tasks/WorkerInProgress";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import ClientSingleFreelancer from "./client/ClientSingleFreelancer";
 
 export {
   AdminHome,
@@ -35,6 +36,7 @@ export {
   ClientIncomplete,
   ClientCompleted,
   ClientInProgress,
+  ClientSingleFreelancer,
   GuestHome,
   GuestAbout,
   GuestContact,

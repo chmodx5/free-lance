@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { CheckAuthStatus } from "../shared";
 import SidebarLayout from "./SidebarLayout";
+import { useLocation } from "react-router-dom";
 
 const ClientLayout = ({}) => {
+  const navigate = useLocation();
+  let current_route = navigate.pathname;
+  console.log(current_route, `i dont know how to navigate`);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <>
-      <CheckAuthStatus account_type={"client"} />
+      <CheckAuthStatus
+        current_location={current_route}
+        account_type={"client"}
+      />
       <SidebarLayout
         toggle_sidebar={() => setSidebarOpen(!sidebarOpen)}
         nav_links={[
