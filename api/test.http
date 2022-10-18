@@ -37,7 +37,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2w5MmE5bnVwMDAw
 
 
 ###
-GET http://localhost:5000/api/freelancers/search?page=1&term=potassium HTTP/1.1
+GET http://localhost:5000/api/freelancers/search?page=1&query=potassium HTTP/1.1
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2w5ZHBmeGs3MDAwMGJmcmthYzY3aWEyciIsImV4cGlyZXNJbiI6MzAwLCJpYXQiOjE2NjYwNzA0NTV9.fsqTxULNSNO-v6jIaHibytbcqS3Dc0JP4_JkMAaoNEE
 

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import {
-  AppTable,
   Card,
   AutoComplete,
-  Chip,
   Button,
   FreeLancerCard,
 } from "./../../components/shared";
 import { HiChevronDown } from "react-icons/hi";
-import { BsChevronExpand } from "react-icons/bs";
+import { useGetAllFreelancersQuery } from "../../services/apiSlice";
 
 const ClientFreelancers = () => {
+  const all_freelancers = useGetAllFreelancersQuery();
+  console.log(all_freelancers);
   return (
     <>
       <div className="grid gap-4">
@@ -43,25 +43,59 @@ const ClientFreelancers = () => {
             />
           </div>
         </Card>
-
-        <ul className="grid gap-5">
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
-            <li key={index}>
-              <FreeLancerCard
-                id={"5432534gh"}
-                name={"customer one"}
-                rating={"2.2"}
-                reviews={"20"}
-                completion_rate={"36"}
-                description={
-                  "Lorem, ipsum dolor sit amet consectet adipisicing elit. Eo  obcaecati omnis repudiandae ipsum blanditiis consectetur expedita corrupti numquam soluta, saepe inventore facere consequuntur in non quibusdam, quaerat, dolorum qui totam."
-                }
-                skills={["html", "css", "js", "php", "laravel"]}
-                display_image={""}
-              />
-            </li>
-          ))}
-        </ul>
+        {all_freelancers.isSuccess ? (
+          <>
+            <ul className="grid gap-5">
+              {all_freelancers.data.data.items.map((freelancer, index) => (
+                <li key={index}>
+                  <FreeLancerCard
+                    id={freelancer.id}
+                    name={freelancer.username}
+                    rating={"2.2"}
+                    reviews={"20"}
+                    completion_rate={"36"}
+                    description={
+                      "Lorem, ipsum dolor sit amet consectet adipisicing elit. Eo  obcaecati omnis repudiandae ipsum blanditiis consectetur expedita corrupti numquam soluta, saepe inventore facere consequuntur in non quibusdam, quaerat, dolorum qui totam."
+                    }
+                    skills={["html", "css", "js", "php", "laravel"]}
+                    display_image={""}
+                  />
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <></>
+        )}
+        <div>
+          pagination
+          {all_freelancers.isSuccess ? (
+            <>
+              <div className="flex space-x-3">
+                {all_freelancers.data.data.pages
+                  .slice(0, 3)
+                  .map((item, index) => (
+                    <Button variant={"outlined"}>{item.page}</Button>
+                  ))}
+                <div>................</div>
+                {all_freelancers.data.data.pages
+                  .slice(
+                    all_freelancers.data.data.pages.length - 3,
+                    all_freelancers.data.data.pages.length
+                  )
+                  .map((item, index) => (
+                    <Button variant={"outlined"}>{item.page}</Button>
+                  ))}
+              </div>
+              <div>
+                {all_freelancers.data.data.total} results showing page 5 of{" "}
+                {all_freelancers.data.data.totalPages}
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </>
   );

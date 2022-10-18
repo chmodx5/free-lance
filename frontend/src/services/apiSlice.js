@@ -26,7 +26,17 @@ export const apiSlice = createApi({
         },
       }),
     }),
+    getAllFreelancers: builder.query({
+      query: (payload) => ({
+        url: "/api/freelancers/search?page=1",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = apiSlice;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useGetAllFreelancersQuery,
+} = apiSlice;

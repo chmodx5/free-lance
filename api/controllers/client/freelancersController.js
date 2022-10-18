@@ -34,13 +34,13 @@ async function main() {
   };
 
   const searchFreelancer = async (req, res) => {
-    // console.log(req.query, "term");
+    // console.log(req.query, "query");
     let freelancers;
     if (
-      !req.query.term ||
-      req.query.term === undefined ||
-      req.query.term === null ||
-      req.query.term === ""
+      !req.query.query ||
+      req.query.query === undefined ||
+      req.query.query === null ||
+      req.query.query === ""
     ) {
       let totalfreelancers = await prisma.client.findMany({});
       let total_pages = totalfreelancers.length / 10;
@@ -83,7 +83,7 @@ async function main() {
       let totalfreelancers = await prisma.client.findMany({
         where: {
           username: {
-            contains: req.query.term,
+            contains: req.query.query,
           },
         },
       });
@@ -111,7 +111,7 @@ async function main() {
         },
         where: {
           username: {
-            contains: req.query.term,
+            contains: req.query.query,
           },
         },
       });
