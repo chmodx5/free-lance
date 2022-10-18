@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const artistsRoutes = require("./routes/artistsRoutes.js");
 const authRoutes = require("./routes/authRoutes.js");
+const clientRoutes = require("./routes/clientRoutes.js");
 const cors = require("cors");
 const verifyjwt = require("./middleware/veriryjwt");
 
@@ -12,7 +13,9 @@ app.use(bodyParser.json());
 // app.use(verifyjwt);
 
 app.use("/api/artists", artistsRoutes);
+app.use("/api/freelancers", clientRoutes);
 app.use("/auth", authRoutes);
+
 app.get("/", (req, res) => {
   // res.send("Welcome to the Users API! " + req.user_id);
   return res.status(200).json({ message: "Welcome to the Users API!" });
