@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
 
-    "username": "useronee",
+    "username": "userone",
 
     "password": "useronepassword",
   
@@ -16,10 +16,12 @@ Content-Type: application/json
 
 {
 
-    "username": "userone",
-
+    "first_name": "user",
+    "last_name" : "one",
+    "username":"userone",
+    "email": "userone@gmail.com",
     "password": "useronepassword",
-  
+    "password_confirmation": "useronepassword",
     "account_type": "client"
 }
 
