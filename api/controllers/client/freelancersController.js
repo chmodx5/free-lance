@@ -28,25 +28,114 @@ async function main() {
       res.status(200).json({
         status: true,
         message: "user found",
-        user: freelancer,
+        data: freelancer,
       });
     }
   };
 
   const searchFreelancer = async (req, res) => {
-    console.log(req.params);
+    // console.log(req.query, "term");
+    let freelancers;
+    if (
+      !req.query.term ||
+      req.query.term === undefined ||
+      req.query.term === null ||
+      req.query.term === ""
+    ) {
+      let totalfreelancers = await prisma.client.findMany({});
+      let total_pages = totalfreelancers.length / 10;
 
-    const freelancers = await prisma.client.findMany({
-      where: {
-        username: req.params.searchTerm,
-      },
-    });
+      const pagesList = () => {
+        let pages = [];
+        for (let index = 0; index < total_pages; index++) {
+          pages.push({
+            page: index,
+            link: "/freelancers/search?+page=" + index,
+            skip: 10 * index,
+          });
+        }
+        return pages;
+      };
 
-    res.status(200).json({
-      status: true,
-      message: "search freelancer",
-      data: freelancers,
-    });
+      freelancers = await prisma.client.findMany({
+        skip: pagesList().filter((page) => page.page === req.query.page)[0]
+          ? pagesList().filter((page) => page.page === req.query.page)[0].skip
+          : 0,
+        take: 10,
+        orderBy: {
+          first_name: "asc",
+        },
+      });
+
+      res.status(200).json({
+        status: true,
+        message: "found " + freelancers.length + " " + "items",
+        data: {
+          firstPage: freelancers[0].id,
+          lastPage: freelancers[9].id,
+          totalPages: Math.ceil(totalfreelancers.length / 10),
+          total: totalfreelancers.length,
+          items: freelancers,
+          pages: pagesList(),
+        },
+      });
+    } else {
+      let totalfreelancers = await prisma.client.findMany({
+        where: {
+          username: {
+            contains: req.query.term,
+          },
+        },
+      });
+      let total_pages = totalfreelancers.length / 10;
+
+      const pagesList = () => {
+        let pages = [];
+        for (let index = 0; index < total_pages; index++) {
+          pages.push({
+            page: index,
+            link: "/freelancers/search?+page=" + index,
+            skip: 10 * index,
+          });
+        }
+        return pages;
+      };
+
+      freelancers = await prisma.client.findMany({
+        skip: pagesList().filter((page) => page.page === req.query.page)[0]
+          ? pagesList().filter((page) => page.page === req.query.page)[0].skip
+          : 0,
+        take: 10,
+        orderBy: {
+          first_name: "asc",
+        },
+        where: {
+          username: {
+            contains: req.query.term,
+          },
+        },
+      });
+
+      res.status(200).json(
+        freelancers
+          ? {
+              status: true,
+              message: "found " + freelancers.length + " " + "items",
+              data: {
+                firstPage: freelancers[0] ? freelancers[0].id : null,
+                lastPage: freelancers[9] ? freelancers[9].id : null,
+                totalPages: Math.ceil(totalfreelancers.length / 10),
+                total: totalfreelancers.length,
+                items: freelancers,
+                pages: pagesList(),
+              },
+            }
+          : {
+              status: false,
+              message: "not found",
+            }
+      );
+    }
   };
 
   module.exports = {

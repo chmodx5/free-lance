@@ -5,7 +5,7 @@ const {
 } = require("../controllers/client/freelancersController");
 const router = express.Router();
 
-router.get("/:username", getSingleFreelancerById);
-router.get("/search/:searchTerm", searchFreelancer);
+router.get("/single/:username", getSingleFreelancerById);
+router.get("/search", searchFreelancer);
 
 module.exports = router;
