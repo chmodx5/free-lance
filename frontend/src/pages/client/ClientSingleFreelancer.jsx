@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ClientSingleFreelancer = () => {
-  const navigate = useNavigate();
-  console.log(navigate);
-  return <div>ClientSingleFreelancer</div>;
+  const location = useParams();
+  console.log(location);
+  return <div>ClientSingleFreelancer - {location.id}</div>;
 };
 
 export default ClientSingleFreelancer;

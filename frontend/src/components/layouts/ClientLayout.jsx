@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 const ClientLayout = ({}) => {
   const navigate = useLocation();
   let current_route = navigate.pathname;
-  console.log(current_route, `i dont know how to navigate`);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <>
