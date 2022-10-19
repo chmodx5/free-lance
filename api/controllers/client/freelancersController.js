@@ -34,7 +34,7 @@ async function main() {
   };
 
   const searchFreelancer = async (req, res) => {
-    // console.log(req.query, "query");
+    console.log(req.query);
     let freelancers;
     if (
       !req.query.query ||
@@ -50,33 +50,41 @@ async function main() {
         for (let index = 0; index < total_pages; index++) {
           pages.push({
             page: index,
-            link: "/freelancers/search?+page=" + index,
+            link: "/freelancers/search?page=" + index,
             skip: 10 * index,
           });
         }
         return pages;
       };
 
+      let x = pagesList().filter((item) => item.page == req.query.page);
+      console.log(x);
+
       freelancers = await prisma.client.findMany({
-        skip: pagesList().filter((page) => page.page === req.query.page)[0]
-          ? pagesList().filter((page) => page.page === req.query.page)[0].skip
+        skip: pagesList().filter((page) => page.page == req.query.page)[0]
+          ? pagesList().filter((page) => page.page == req.query.page)[0].skip
           : 0,
         take: 10,
         orderBy: {
           first_name: "asc",
         },
       });
-
+      let usernames = await prisma.client.findMany({
+        select: {
+          username: true,
+        },
+      });
       res.status(200).json({
         status: true,
         message: "found " + freelancers.length + " " + "items",
         data: {
           firstPage: freelancers[0].id,
-          lastPage: freelancers[9].id,
+          lastPage: freelancers[9] ? freelancers[9].id : null,
           totalPages: Math.ceil(totalfreelancers.length / 10),
           total: totalfreelancers.length,
           items: freelancers,
           pages: pagesList(),
+          usernames: usernames.map((item, index) => item.username),
         },
       });
     } else {
@@ -88,13 +96,12 @@ async function main() {
         },
       });
       let total_pages = totalfreelancers.length / 10;
-
       const pagesList = () => {
         let pages = [];
         for (let index = 0; index < total_pages; index++) {
           pages.push({
             page: index,
-            link: "/freelancers/search?+page=" + index,
+            link: "/freelancers/search?page=" + index,
             skip: 10 * index,
           });
         }

@@ -27,10 +27,12 @@ export const apiSlice = createApi({
       }),
     }),
     getAllFreelancers: builder.query({
-      query: (payload) => ({
-        url: "/api/freelancers/search?page=1",
-        method: "GET",
-      }),
+      query: (payload) => {
+        return {
+          url: `/api/freelancers/search${payload ? payload : "?page=1"}`,
+          method: "GET",
+        };
+      },
     }),
   }),
 });

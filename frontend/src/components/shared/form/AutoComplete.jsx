@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Combobox } from "@headlessui/react";
 import { BsChevronExpand } from "react-icons/bs";
 
-const AutoComplete = ({ values }) => {
-  const [selectedValue, setSelectedValue] = useState(null);
+const AutoComplete = ({
+  values,
+  setSelectedAutoComplete,
+  selectedAutoComplete,
+}) => {
   const [query, setQuery] = useState("");
 
   const filteredPeople =
@@ -15,7 +18,7 @@ const AutoComplete = ({ values }) => {
   return (
     <div>
       {" "}
-      <Combobox value={selectedValue} onChange={setSelectedValue}>
+      <Combobox value={selectedAutoComplete} onChange={setSelectedAutoComplete}>
         <div className="relative">
           <div className="relative">
             <Combobox.Button className="absolute right-3 top-1/2 bottom-1/2 flex items-center pr-2 bg-red-700">
@@ -31,7 +34,7 @@ const AutoComplete = ({ values }) => {
           </div>
           <Combobox.Options
             className={
-              "absolute w-full z-50  py-1 px-1 bg-white rounded mt-1 divide-y shadow hover:shadow-lg"
+              "absolute w-full z-50  py-1 px-1 bg-white rounded mt-1 divide-y shadow hover:shadow-lg max-h-56 overflow-y-scroll"
             }
           >
             {filteredPeople.map((item) => (
