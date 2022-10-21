@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const artistsRoutes = require("./routes/artistsRoutes.js");
 const authRoutes = require("./routes/authRoutes.js");
 const clientRoutes = require("./routes/clientRoutes.js");
+const skillsRoutes = require("./routes/skillsRoutes");
 const cors = require("cors");
 const verifyjwt = require("./middleware/veriryjwt");
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 // app.use(verifyjwt);
 
 app.use("/api/artists", artistsRoutes);
+app.use("/api/skills", skillsRoutes);
 app.use("/api/freelancers", clientRoutes);
 app.use("/auth", authRoutes);
 

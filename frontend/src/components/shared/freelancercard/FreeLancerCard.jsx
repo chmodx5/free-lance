@@ -14,40 +14,45 @@ const FreeLancerCard = ({
   display_image,
 }) => {
   return (
-    <Link to={`/client/freelancer/${id}`} className={"hover:cursor-pointer"}>
-      <Card>
-        <div className="flex space-x-3">
-          <div className="">
-            <div className="aspect-square w-36 rounded bg-gray-400"></div>
+    <Card>
+      <div className="flex space-x-3">
+        <div className="">
+          <div className="aspect-square w-36 rounded bg-gray-400"></div>
+        </div>
+        <div>
+          <Link
+            to={`/client/freelancer/${id}`}
+            className={"hover:cursor-pointer"}
+          >
+            <h3 className="mb-1 font-bold text-lg capitalize hover:text-gray-800">
+              {name}
+            </h3>
+          </Link>
+          <div className="flex  text-sm divide-x-2 divide-black">
+            <div className="pr-3">
+              Rating <span className="font-semibold">{rating}</span>
+            </div>
+            <div className="px-3">
+              <span className=" font-semibold">{reviews}</span> Reviews
+            </div>
+            <div className="pl-3">
+              <span className="font-semibold">{completion_rate}%</span>{" "}
+              Completion rate
+            </div>
           </div>
+          <p className="py-3">{description}</p>
           <div>
-            <h3 className="mb-1 font-bold text-lg capitalize">{name}</h3>
-            <div className="flex  text-sm divide-x-2 divide-black">
-              <div className="pr-3">
-                Rating <span className="font-semibold">{rating}</span>
-              </div>
-              <div className="px-3">
-                <span className=" font-semibold">{reviews}</span> Reviews
-              </div>
-              <div className="pl-3">
-                <span className="font-semibold">{completion_rate}%</span>{" "}
-                Completion rate
-              </div>
-            </div>
-            <p className="py-3">{description}</p>
-            <div>
-              <ul className="flex space-x-3">
-                {skills.map((item, index) => (
-                  <li key={index}>
-                    <Chip key={index} text={item} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="flex space-x-3">
+              {skills.map((item, index) => (
+                <li key={index}>
+                  <Chip key={index} text={item} />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </Card>
-    </Link>
+      </div>
+    </Card>
   );
 };
 
