@@ -71,17 +71,38 @@ async function main() {
       });
     }
   };
+
   const getSingleTask = async (req, res) => {
-    return res.send("wow");
+    const taskId = req.params.taskId;
+
+    const taskFromDB = await prisma.tasks.findUnique({
+      where: {
+        id: taskId,
+      },
+    });
+    if (!taskFromDB) {
+      res.status(200).json({
+        success: false,
+        message: "no task found",
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Task found",
+        data: taskFromDB,
+      });
+    }
   };
+
   const searchTask = async (req, res) => {
-    let tasks = await prisma.client.findMany({
-      select: {
-        first_name: true,
-        last_name: true,
-        username: true,
-        email: true,
-        createdAt: true,
+    let tasks = await prisma.tasks.findMany({
+      include: {
+        skills: {
+          select: {
+            id: true,
+            skill: true,
+          },
+        },
       },
     });
     return res.status(200).json({
@@ -90,6 +111,7 @@ async function main() {
       data: tasks,
     });
   };
+
   const updateTask = async (req, res) => {
     return res.send("wow");
   };

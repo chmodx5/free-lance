@@ -11,7 +11,7 @@ const {
 } = require("./../controllers/tasksController");
 
 router.post("/createtask", createTask);
-router.get("/getsingletask", getSingleTask);
+router.get("/getsingletask/:taskId", getSingleTask);
 router.get("/searchtask", searchTask);
 router.put("/updatetask/:taskId", updateTask);
 router.put("/assigntask", assignTask);
