@@ -1,21 +1,10 @@
-const { PrismaClient, Prisma } = require("@prisma/client");
-const { faker } = require("@faker-js/faker");
-const moment = require("moment");
-const e = require("express");
+const { PrismaClient } = require("@prisma/client");
 
 //objextives here
 //we want to get the all users and projects that belong to some skill
 
 const prisma = new PrismaClient();
 
-const validateIncomingRequest = (req, res) => {
-  if (!req) {
-    return res.status(200).json({
-      status: false,
-      message: "field is empty",
-    });
-  }
-};
 async function main() {
   const createSkill = async (req, res) => {
     const newSkill = req.body.skill;
