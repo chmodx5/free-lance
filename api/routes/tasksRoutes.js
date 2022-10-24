@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const {
-  createTask,
-  getSingleTask,
-  searchTask,
-  updateTask,
-  assignTask,
-  deAssignTask,
-  deleteTask,
-} = require("./../controllers/tasksController");
+
+const createTask = require("./../controllers/tasks/createTask");
+const getSingleTask = require("./../controllers/tasks/getSingleTask");
+const searchTask = require("./../controllers/tasks/searchTask");
+const updateTask = require("./../controllers/tasks/updateTask");
+const assignTask = require("./../controllers/tasks/assignTask");
+const deAssignTask = require("./../controllers/tasks/deAssignTask");
+const deleteTask = require("./../controllers/tasks/deleteTask");
 
 router.post("/createtask", createTask);
 router.get("/getsingletask/:taskId", getSingleTask);

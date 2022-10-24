@@ -2,7 +2,13 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-async function main() {}
+async function main() {
+  const updateTask = async (req, res) => {
+    return res.send("wow");
+  };
+
+  module.exports = updateTask;
+}
 
 main()
   .then(async () => {

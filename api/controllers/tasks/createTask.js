@@ -1,8 +1,5 @@
-const { PrismaClient, Prisma } = require("@prisma/client");
-const { faker } = require("@faker-js/faker");
-const moment = require("moment");
-// objectives here
-// we want to be able to create, update, delete and read a single project and all projects
+const { PrismaClient } = require("@prisma/client");
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -49,10 +46,11 @@ async function main() {
               createdById: created_by_ID,
             },
           })
-          .then(() => {
+          .then((response) => {
             res.status(200).json({
               status: true,
               message: "Task created successfully",
+              data: response,
             });
           })
           .catch((err) => {
@@ -72,68 +70,7 @@ async function main() {
     }
   };
 
-  const getSingleTask = async (req, res) => {
-    const taskId = req.params.taskId;
-
-    const taskFromDB = await prisma.tasks.findUnique({
-      where: {
-        id: taskId,
-      },
-    });
-    if (!taskFromDB) {
-      res.status(200).json({
-        success: false,
-        message: "no task found",
-      });
-    } else {
-      res.status(200).json({
-        status: true,
-        message: "Task found",
-        data: taskFromDB,
-      });
-    }
-  };
-
-  const searchTask = async (req, res) => {
-    let tasks = await prisma.tasks.findMany({
-      include: {
-        skills: {
-          select: {
-            id: true,
-            skill: true,
-          },
-        },
-      },
-    });
-    return res.status(200).json({
-      status: true,
-      message: "Tasks found",
-      data: tasks,
-    });
-  };
-
-  const updateTask = async (req, res) => {
-    return res.send("wow");
-  };
-  const assignTask = async (req, res) => {
-    return res.send("wow");
-  };
-  const deAssignTask = async (req, res) => {
-    return res.send("wow");
-  };
-  const deleteTask = async (req, res) => {
-    return res.send("wow");
-  };
-
-  module.exports = {
-    createTask,
-    getSingleTask,
-    searchTask,
-    updateTask,
-    assignTask,
-    deAssignTask,
-    deleteTask,
-  };
+  module.exports = createTask;
 }
 
 main()
