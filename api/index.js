@@ -12,13 +12,14 @@ const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(verifyjwt);
 
+app.use("/auth", authRoutes);
+
+app.use(verifyjwt);
 app.use("/api/artists", artistsRoutes);
 app.use("/api/skills", skillsRoutes);
 app.use("/api/tasks", tasksRoutes);
 app.use("/api/freelancers", clientRoutes);
-app.use("/auth", authRoutes);
 
 app.get("/", (req, res) => {
   // res.send("Welcome to the Users API! " + req.user_id);

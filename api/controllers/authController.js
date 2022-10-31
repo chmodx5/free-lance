@@ -28,7 +28,10 @@ async function main() {
     bcrypt.compare(password, user.password, async (err, response) => {
       if (response) {
         console.log(user.id);
-        const token = jwt.sign({ data: user.id, expiresIn: 300 }, "siri");
+        const token = jwt.sign(
+          { data: user.id, expiresIn: 300 },
+          process.env.JWT_SECRET
+        );
         return res.status(200).json({
           status: true,
           user: {

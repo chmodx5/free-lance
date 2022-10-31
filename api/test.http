@@ -40,7 +40,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2w5MmE5bnVwMDAw
 
 GET http://localhost:5000/api/skills/getskills HTTP/1.1
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2w5MmE5bnVwMDAwMGJ3dGIwcXVrZnRyMSIsImV4cGlyZXNJbiI6MzAwLCJpYXQiOjE2NjUzODU4NTR9.LNoRdPfZpf3PsRwbCxnEOnDlW-EmDTAmGKU996L7DD4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2w5MmE5bnVwMDAwMGJ3dGIwcXVrZnRyMSIsImV4cGlyZXNJbiI6MzAwLCJpYXQiOjE2NjUzODU4NTR9.LNoRdPfZpf3PsRwbCxnEOnDlW-
 
 
 
