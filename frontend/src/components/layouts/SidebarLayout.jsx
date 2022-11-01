@@ -10,19 +10,17 @@ const SidebarLayout = ({ nav_links, sidebar_links }) => {
         toggle_sidebar={() => setSidebarOpen(!sidebarOpen)}
         nav_links={nav_links}
       />
-      <main>
-        <div className="flex  pt-16">
-          <div className={`${sidebarOpen ? "w-64" : "hidden "}  h-screen`}>
-            {sidebarOpen && <Sidebar sidebar_links={sidebar_links} />}
+      <main className="pt-16 flex ">
+        <div
+          className={`hidden md:block ${sidebarOpen ? "" : " "} w-72 relative`}
+        >
+          {sidebarOpen && <Sidebar sidebar_links={sidebar_links} />}
+        </div>
+        <div className={`container mx-auto px-4  ${!sidebarOpen ? "" : ""}`}>
+          <div className="">
+            <Outlet />
           </div>
-          <div
-            className={`flex-1 ${!sidebarOpen ? " container mx-auto" : "px-4"}`}
-          >
-            <div className="">
-              <Outlet />
-            </div>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </main>
     </div>

@@ -9,6 +9,7 @@ import ClientActiveBids from "./client/tasks/ClientActiveBids";
 import ClientIncomplete from "./client/tasks/ClientIncomplete";
 import ClientCompleted from "./client/tasks/ClientCompleted";
 import ClientInProgress from "./client/tasks/ClientInProgress";
+import ClientAddNewTask from "./client/tasks/ClientAddNewTask";
 import GuestHome from "./guest/GuestHome";
 import GuestAbout from "./guest/GuestAbout";
 import GuestContact from "./guest/GuestContact";
@@ -37,6 +38,7 @@ export {
   ClientCompleted,
   ClientInProgress,
   ClientSingleFreelancer,
+  ClientAddNewTask,
   GuestHome,
   GuestAbout,
   GuestContact,

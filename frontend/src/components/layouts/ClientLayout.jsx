@@ -68,7 +68,7 @@ const ClientLayout = ({}) => {
               },
               {
                 title: "add new",
-                link: "/client/tasks/newtask",
+                link: "/client/tasks/addnewtask",
               },
             ],
           },

@@ -1,16 +1,27 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 
-const FormInput = ({ placeholder, field_name, type, touched, errors }) => {
+const FormInput = ({
+  placeholder,
+  field_name,
+  type,
+  touched,
+  errors,
+  as,
+  label,
+  onChange,
+  ...props
+}) => {
   return (
-    <div className="mb-4">
-      <div className="mb-2">
+    <div className="mb-2">
+      <div className="mb-1">
         <label
           htmlFor={field_name}
           className={`text-sm font-semibold ${
             touched ? (errors ? "text-error" : "") : ""
           }`}
         >
+          <label htmlFor="">{label}</label>
           {touched ? (
             <span className="font-semibold text-error capitalize">
               <ErrorMessage
@@ -24,6 +35,8 @@ const FormInput = ({ placeholder, field_name, type, touched, errors }) => {
       <Field
         type={type}
         name={field_name}
+        as={as}
+        onChange={onChange}
         placeholder={placeholder}
         className={`block px-3 py-1 w-full text-gray-900 bg-white rounded border border-gray-300 sm:text-md   ${
           touched
@@ -33,6 +46,7 @@ const FormInput = ({ placeholder, field_name, type, touched, errors }) => {
             : "border-gray-300 focus:border-secondary focus:outline focus:outline-2 focus:outline-secondary"
         }
                focus:border-none  `}
+        {...props}
       />
     </div>
   );

@@ -23,6 +23,7 @@ import {
   ClientIncomplete,
   ClientInProgress,
   ClientSingleFreelancer,
+  ClientAddNewTask,
 } from "./pages";
 import {
   AdminLayout,
@@ -79,6 +80,10 @@ function App() {
                       tab: "incomplete",
                       link: "/client/tasks/incomplete",
                     },
+                    {
+                      tab: "add new task",
+                      link: "/client/tasks/addnewtask",
+                    },
                   ]}
                 />
               }
@@ -88,6 +93,7 @@ function App() {
               <Route path="completed" element={<ClientCompleted />} />
               <Route path="incomplete" element={<ClientIncomplete />} />
               <Route path="inprogress" element={<ClientInProgress />} />
+              <Route path="addnewtask" element={<ClientAddNewTask />} />
             </Route>
             <Route
               path="account"

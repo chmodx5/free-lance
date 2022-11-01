@@ -58,7 +58,7 @@ const Login = () => {
                   .min(3, "username must be more than 3 characters ")
                   .required("username is required"),
                 password: Yup.string()
-                  .max(15, "Password must be at least 15 characters ")
+                  .max(30, "Password must be at least 15 characters ")
                   .min(8, "passowrd must be more than 8 characters ")
                   .required("This field is required"),
               })}

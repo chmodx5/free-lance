@@ -1,57 +1,126 @@
-import React, { useState } from "react";
-import { Combobox } from "@headlessui/react";
-import { BsChevronExpand } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import Chip from "../chip/Chip";
+import FormInput from "./FormInput";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
-const AutoComplete = ({
-  values,
-  setSelectedAutoComplete,
-  selectedAutoComplete,
-}) => {
-  const [query, setQuery] = useState("");
+const AutoComplete = ({ options, selectedItems, setSelectedItems }) => {
+  const [items, setItems] = useState(options);
 
-  const filteredPeople =
-    query === ""
-      ? values
-      : values.filter((person) => {
-          return person.toLowerCase().includes(query.toLowerCase());
-        });
+  useEffect(() => {
+    if (selectedItems.length > 0) {
+      if (items) {
+        for (let index = 0; index < selectedItems.length; index++) {
+          if (items.some((item) => item.item == selectedItems[index].item)) {
+            let appSkills = items;
+            appSkills = appSkills.filter(
+              (itm) => itm.item !== selectedItems[index].item
+            );
+            setItems(appSkills);
+          }
+        }
+      }
+    }
+  }, [selectedItems]);
+
+  const searchItems = (e) => {
+    if (e.target.value) {
+      let filteredItems = items.filter((item) =>
+        item.item.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setItems(filteredItems);
+    } else if (e.target.value == "") {
+      if (selectedItems.length > 0) {
+        setItems(options);
+        let filtered_items = [];
+        for (let index = 0; index < selectedItems.length; index++) {
+          if (index === 0) {
+            filtered_items = options.filter(
+              (item) => item.id != selectedItems[index].id
+            );
+            setItems(filtered_items);
+          } else {
+            filtered_items = filtered_items.filter(
+              (item) => item.id != selectedItems[index].id
+            );
+            setItems(filtered_items);
+          }
+        }
+      } else {
+        setItems(options);
+      }
+    }
+  };
+  const addSelectedItem = (item) => {
+    let new_item = [...selectedItems, item];
+    setSelectedItems(new_item);
+  };
+  const removeSelectedItem = (item) => {
+    let new_selected_items = selectedItems.filter((x) => x.id != item.id);
+    let new_items = [...items, item];
+    setSelectedItems(new_selected_items);
+    setItems(new_items);
+  };
+
   return (
-    <div>
-      {" "}
-      <Combobox value={selectedAutoComplete} onChange={setSelectedAutoComplete}>
-        <div className="relative">
-          <div className="relative">
-            <Combobox.Button className="absolute right-3 top-1/2 bottom-1/2 flex items-center pr-2 bg-red-700">
-              <BsChevronExpand />
-            </Combobox.Button>
-            <Combobox.Input
-              placeholder="Select project"
-              className={
-                "rounded border border-gray-300 px-3 py-1 focus:outline focus:outline-1 focus:border-secondary focus: outline-secondary"
-              }
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </div>
-          <Combobox.Options
-            className={
-              "absolute w-full z-50  py-1 px-1 bg-white rounded mt-1 divide-y shadow hover:shadow-lg max-h-56 overflow-y-scroll"
-            }
-          >
-            {filteredPeople.map((item) => (
-              <Combobox.Option
-                className={
-                  "hover:bg-secondary px-3 py-1 rounded hover:text-white hover:cursor-pointer"
+    <>
+      <div className="mb-2">
+        <label htmlFor="" className="text-sm font-semibold ">
+          Choose items relevant to your task
+        </label>
+      </div>
+
+      <div>
+        {selectedItems.length > 0 && (
+          <ul className="flex flex-wrap gap-2 mb-3">
+            {selectedItems.map((item) => (
+              <Chip
+                key={item.id}
+                active
+                text={item.item}
+                icon={<FaTimes />}
+                onClick={() =>
+                  removeSelectedItem({
+                    id: item.id,
+                    item: item.item,
+                  })
                 }
-                key={item}
-                value={item}
-              >
-                {item}
-              </Combobox.Option>
+              />
             ))}
-          </Combobox.Options>
+          </ul>
+        )}
+        <FormInput
+          placeholder="Search skills "
+          field_name="description"
+          type="text"
+          onChange={searchItems}
+        />
+
+        <div>
+          <small className="text-gray-400 font-semibold">
+            Click on a skill to select it
+          </small>
         </div>
-      </Combobox>
-    </div>
+        <ul className="flex gap-2 flex-wrap">
+          {items.map((item) => (
+            <li key={item.id}>
+              <Chip
+                className={
+                  "py-1 px-2 hover:cursor-pointer hover:bg-primary-main hover:text-secondary-text  "
+                }
+                text={item.item}
+                value={item}
+                icon={<FaCheck />}
+                onClick={() =>
+                  addSelectedItem({ id: item.id, item: item.item })
+                }
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
