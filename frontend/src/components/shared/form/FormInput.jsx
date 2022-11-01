@@ -18,17 +18,15 @@ const FormInput = ({
         <label
           htmlFor={field_name}
           className={`text-sm font-semibold ${
-            touched ? (errors ? "text-error" : "") : ""
+            touched ? (errors ? "" : "") : ""
           }`}
         >
           <label htmlFor="">{label}</label>
+
           {touched ? (
-            <span className="font-semibold text-error capitalize">
-              <ErrorMessage
-                className="font-semibold text-error "
-                name={field_name}
-              />
-            </span>
+            <div className="font-semibold text-error capitalize text-error-main">
+              <ErrorMessage className=" text-error-main " name={field_name} />
+            </div>
           ) : null}
         </label>
       </div>
@@ -36,7 +34,7 @@ const FormInput = ({
         type={type}
         name={field_name}
         as={as}
-        onChange={onChange}
+        // onChange={onChange}
         placeholder={placeholder}
         className={`block px-3 py-1 w-full text-gray-900 bg-white rounded border border-gray-300 sm:text-md   ${
           touched

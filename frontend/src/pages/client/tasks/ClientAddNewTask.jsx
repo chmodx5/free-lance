@@ -6,8 +6,7 @@ import {
   CheckAuthStatus,
   AutoComplete,
 } from "../../../components/shared";
-import { Link, useNavigate } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import { TbFidgetSpinner } from "react-icons/tb";
 
@@ -18,59 +17,75 @@ const ClientAddNewTask = () => {
       <CheckAuthStatus />
       <Card>
         <Formik
-          initialValues={{ username: "", password: "" }}
+          initialValues={{
+            title: "",
+            description: "",
+            skills: selectedItems,
+            skill: [],
+          }}
           validationSchema={Yup.object({
-            username: Yup.string()
-              .max(15, "username must be at least 15 characters ")
-              .min(3, "username must be more than 3 characters ")
-              .required("username is required"),
-            password: Yup.string()
-              .max(30, "Password must be at least 15 characters ")
-              .min(8, "passowrd must be more than 8 characters ")
-              .required("This field is required"),
+            title: Yup.string()
+              .max(100, "title cannot exceed 100 characters ")
+              .min(5, "title must be more than 5 characters ")
+              .required("title is required"),
+            description: Yup.string()
+              .max(1500, "description cannot exceed 1500 characters")
+              .min(100, "description must be more than 100 characters ")
+              .required("description is required"),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            login({
-              title: values.title,
-              description: values.description,
-              skills: selectedItems,
-            })
-              .unwrap()
-              .then((res) => {
-                dispatch(setIsUserLoggedIn(true));
-                dispatch(setAuthToken(res.user.token));
-                dispatch(setUser(res.user));
-                localStorage.setItem("auth-token", res.user.token);
-                localStorage.setItem("user", res.user);
-                navigate("/client");
-              })
-              .then((error) => {
-                console.log(error);
-              });
+            console.log(values);
           }}
         >
           {(formik) => (
-            <Form className="px-2">
-              <FormInput
-                label={"Title (e.g. Make me a custom website)"}
-                placeholder="Title"
-                field_name="title"
-                type="text"
-                touched={formik.touched.title}
-                errors={formik.errors.title}
-              />
-              <FormInput
-                label={"Describe your task in detail and how you want it done"}
-                placeholder="Description"
-                field_name="description"
-                as="textarea"
-                touched={formik.touched.description}
-                errors={formik.errors.description}
-                rows="4"
-              />
-              <AutoComplete
+            console.log(formik.values),
+            (
+              <Form className="px-2">
+                <FormInput
+                  label={"Title (e.g. Make me a custom website)"}
+                  placeholder="Title"
+                  field_name="title"
+                  type="text"
+                  touched={formik.touched.title}
+                  errors={formik.errors.title}
+                />
+                <FormInput
+                  label={
+                    "Describe your task in detail and how you want it done"
+                  }
+                  placeholder="Description"
+                  field_name="description"
+                  as="textarea"
+                  touched={formik.touched.description}
+                  errors={formik.errors.description}
+                  rows="4"
+                />
+                <Field
+                  as="select"
+                  name="skill"
+                  multiple={true}
+                  placeholder="something"
+                >
+                  {[
+                    { id: 1, item: "HTML" },
+                    { id: 2, item: "CSS" },
+                    { id: 3, item: "PHP" },
+                    { id: 4, item: "JavaScript" },
+                    { id: 5, item: "React" },
+                    { id: 6, item: "Laravel" },
+                    { id: 7, item: "Vuejs" },
+                    { id: 8, item: "Nextjs" },
+                  ].map((item, index) => (
+                    <option key={index} value={item.id} defaultChecked>
+                      {" "}
+                      {item.item}
+                    </option>
+                  ))}
+                </Field>
+                {/* <AutoComplete
                 selectedItems={selectedItems}
                 setSelectedItems={setSelectedItems}
+                field_name="skill"
                 options={[
                   { id: 1, item: "HTML" },
                   { id: 2, item: "CSS" },
@@ -81,14 +96,14 @@ const ClientAddNewTask = () => {
                   { id: 7, item: "Vuejs" },
                   { id: 8, item: "Nextjs" },
                 ]}
-              />
+              /> */}
+                <Button type="submit">
+                  <TbFidgetSpinner className={`inline-block animate-spin `} />
 
-              <Button type="submit">
-                <TbFidgetSpinner className={`inline-block animate-spin `} />
-
-                <span>Login</span>
-              </Button>
-            </Form>
+                  <span>Login</span>
+                </Button>
+              </Form>
+            )
           )}
         </Formik>
       </Card>

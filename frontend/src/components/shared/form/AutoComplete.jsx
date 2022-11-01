@@ -5,7 +5,12 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-const AutoComplete = ({ options, selectedItems, setSelectedItems }) => {
+const AutoComplete = ({
+  options,
+  selectedItems,
+  setSelectedItems,
+  field_name,
+}) => {
   const [items, setItems] = useState(options);
 
   useEffect(() => {
@@ -92,7 +97,7 @@ const AutoComplete = ({ options, selectedItems, setSelectedItems }) => {
         )}
         <FormInput
           placeholder="Search skills "
-          field_name="description"
+          field_name={field_name}
           type="text"
           onChange={searchItems}
         />
