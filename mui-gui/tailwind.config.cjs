@@ -40,9 +40,6 @@ module.exports = {
           dark: "#1D9591",
         },
       },
-      fontFamily: {
-        sans: "Poppins, sans-serif",
-      },
     },
     container: {
       center: true,

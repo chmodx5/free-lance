@@ -10,6 +10,7 @@ import AutoComplete from "./form/AutoComplete";
 import CheckAuthStatus from "./checkauthstatus/CheckAuthStatus";
 import Chip from "./chip/Chip";
 import FreeLancerCard from "./freelancercard/FreeLancerCard";
+import NavLink from "./navlink/NavLink";
 
 export {
   NavBar,
@@ -24,4 +25,5 @@ export {
   CheckAuthStatus,
   Chip,
   FreeLancerCard,
+  NavLink,
 };
